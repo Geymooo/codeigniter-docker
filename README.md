@@ -1,42 +1,26 @@
-# CodeIgniter 3 on Docker
+# CodeIgniter 4 - CRUD
 
-This is a simple Docker image for CodeIgniter 3. It is based on the official PHP image and includes the latest version of CodeIgniter 3.
+## Requirements
 
-## How to run
+- Docker
+- Docker Compose
 
-Clone this repository and run the following command:
+## Technologies used
+- PHP 8.2
+- MySQL 8.0
+- CodeIgniter v4.3.6
+- CodeIgniter/Shield v1.0.0-beta.6
 
-```bash
-docker-compose up -d
-```
+## Setup
+1. `cp env .env`
+2. `docker-compose build`
+3. `docker-compose up -d`
+4. `docker-compose exec app /bin/sh`
+5. `composer install`
+6. `php spark migrate --all`
+7. Access [http://localhost:8000](http://localhost:8000)
 
-## Container 
-
-- **PHPMyAdmin** is available at `http://localhost:8080`
-- **CodeIgniter** is available at `http://localhost:7700`
-- **MySQL** is available at port `3310`
-
-
-## SQL Query Example Data
-
-The following SQL query can be used to create the example data:
-
-```sql
-create table users (
-	id INT,
-	first_name VARCHAR(50),
-	last_name VARCHAR(50),
-	email VARCHAR(50),
-	gender VARCHAR(50)
-);
-insert into users (id, first_name, last_name, email, gender) values (1, 'Salvidor', 'Zorzenoni', 'szorzenoni0@etsy.com', 'Male');
-insert into users (id, first_name, last_name, email, gender) values (2, 'Verna', 'Marciek', 'vmarciek1@independent.co.uk', 'Female');
-insert into users (id, first_name, last_name, email, gender) values (3, 'Belinda', 'Ablott', 'bablott2@nifty.com', 'Female');
-insert into users (id, first_name, last_name, email, gender) values (4, 'Rudd', 'Powlett', 'rpowlett3@abc.net.au', 'Male');
-insert into users (id, first_name, last_name, email, gender) values (5, 'Gwenneth', 'Rainbird', 'grainbird4@google.com.br', 'Female');
-insert into users (id, first_name, last_name, email, gender) values (6, 'Clarine', 'Whistance', 'cwhistance5@blog.com', 'Female');
-insert into users (id, first_name, last_name, email, gender) values (7, 'Hakim', 'Rogans', 'hrogans6@illinois.edu', 'Male');
-insert into users (id, first_name, last_name, email, gender) values (8, 'Colman', 'Longstreet', 'clongstreet7@slideshare.net', 'Male');
-insert into users (id, first_name, last_name, email, gender) values (9, 'Padraig', 'Utting', 'putting8@phoca.cz', 'Male');
-insert into users (id, first_name, last_name, email, gender) values (10, 'Arny', 'Huggon', 'ahuggon9@samsung.com', 'Male');
-```
+## Run Feature Tests
+1. `docker-compose up -d`
+2. `docker-compose exec app /bin/sh`
+3. `composer test`
